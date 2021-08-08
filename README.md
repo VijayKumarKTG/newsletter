@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Welcome to my newsletter!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can create your own newsletter subscription-based on ReactJS and NodeJS.
 
-## Available Scripts
+Using this project, you can subscribe to a newsletter with your email and can view all of the subscription lists.
 
-In the project directory, you can run:
+## Contents
+- [Welcome to my newsletter!](#welcome-to-my-newsletter)
+  - [Contents](#contents)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [APIs](#apis)
 
-### `yarn start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The following tools will help you develop the project. Some are mandatory and some do not require but are useful.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* [NodeJS](https://nodejs.org/en/download/) and NPM (Required)
+* [sqlite3](https://www.npmjs.com/package/sqlite3) and [sqlitebrowser](https://sqlitebrowser.org/) (Not required)
 
-### `yarn test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Let's start with the setup.
 
-### `yarn build`
+1. First of all, clone this project. 
+   > `git clone https://github.com/VijayKumarKTG/newsletter.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Move into the **newsletter** directory and install all the dependencies for the server.
+   > `cd newsletter && npm install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. After that, you need to go another step into the **client** directory and install all the dependencies for the client.
+   > `cd client && npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. You are done with installing the dependencies. Now, we need to build the client to use in the backend.
+   > `npm run build`
 
-### `yarn eject`
+5. And the final step is to start the server.
+   > `cd .. && npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## APIs
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+There are only 2 APIs endpoints in this project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `/api/subscribe` ( POST ) - Subscribe a user and return a id from the DB.
+* `/api/subscriptions` ( GET ) - Retrieve all the subscribed emails list from DB in JSON format.
