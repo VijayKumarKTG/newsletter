@@ -42,16 +42,26 @@ function App() {
   const submitForm = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    let response = await fetch('/api');
-    let data = await response.json();
-    console.log(data);
-    setTimeout(() => {
-      setStatus('submitted');
-      setTimeout(() => {
-        setStatus('error');
-        setTimeout(() => setStatus('tryagain'), 1000);
-      }, 1000);
-    }, 1000);
+    try {
+      let response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (response.status === 200) {
+        let data = await response.json();
+        if (data) {
+          setStatus('submitted');
+        }
+      } else {
+        throw response.status;
+      }
+    } catch (err) {
+      setStatus('error');
+      setTimeout(() => setStatus('tryagain'), 2000);
+    }
   };
 
   return (
