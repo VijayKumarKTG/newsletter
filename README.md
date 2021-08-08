@@ -5,7 +5,6 @@ You can create your own newsletter subscription-based on ReactJS and NodeJS.
 Using this project, you can subscribe to a newsletter with your email and can view all of the subscription lists.
 
 ## Contents
-- [Welcome to my newsletter!](#welcome-to-my-newsletter)
   - [Contents](#contents)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
