@@ -13,10 +13,20 @@ app.post('/api/subscribe', (req, res) => {
   subscriptions
     .add(req.body)
     .then((subscription) => {
-      res.status(200).json(subscription);
+      if (typeof subscription === 'number') {
+        res.status(200).json(subscription);
+      } else {
+        throw 'unique';
+      }
     })
     .catch((error) => {
-      res.status(500).json({ message: 'Cannot subscribe now!' });
+      if (error === 'unique') {
+        res
+          .status(500)
+          .json({ message: 'This email address is already registered!' });
+      } else {
+        res.status(500).json({ message: 'Cannot subscribe now!' });
+      }
     });
 });
 
@@ -25,9 +35,7 @@ app.get('/api/subscriptions', (req, res) => {
     .find()
     .then((lists) => res.status(200).json({ lists: lists }))
     .catch((error) =>
-      res
-        .status(500)
-        .json({ message: 'Cannot retrieve the subscription lists.' })
+      res.status(500).json({ message: 'No subscription list found!' })
     );
 });
 

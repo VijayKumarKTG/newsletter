@@ -3,8 +3,12 @@ const config = require('./knexfile');
 const db = knex(config.development);
 
 const add = async (email) => {
-  const [id] = await db('subscription').insert(email);
-  return id;
+  try {
+    const [id] = await db('subscription').insert(email);
+    return id;
+  } catch (err) {
+    return err;
+  }
 };
 
 const find = async () => {
